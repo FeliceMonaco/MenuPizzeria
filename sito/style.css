@@ -351,3 +351,14 @@
             background-image: url("immagini/cellulareback.png");
             }
         }
+           /* logo SOLO TELEFONO */
+           @media (max-width: 600px) {
+               .logo-loading {
+                   transform: translateY(80px);
+               }
+           
+               .logo-loading img {
+                   width: 400px;
+                   max-width: 95%;
+               }
+           }
