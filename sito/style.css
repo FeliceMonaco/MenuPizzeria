@@ -337,93 +337,17 @@
 
 
 
-        /* =========================
-        OTTIMIZZAZIONE TELEFONO
-        ========================= */
-
+       /* SFONDO DESKTOP */
+        #loading-screen {
+            background-image: url("immagini/bgcaricamento.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* SFONDO TELEFONO */
         @media (max-width: 600px) {
-
-            /* Schermata di caricamento */
-
-            .logo-loading img {
-                width: 230px;
-                max-width: 75%;
+            #loading-screen {
+            background-image: url("immagini/cellulareback.png");
             }
-
-            .logo-loading {
-                transform: translateY(80px);
-            }
-
-            /* Header */
-
-            header {
-                padding: 40px 15px 35px;
-            }
-
-            .header-logo {
-                font-size: 38px;
-                letter-spacing: 5px;
-            }
-
-            header h1 {
-                font-size: 25px;
-            }
-
-            header p {
-                font-size: 13px;
-            }
-
-            /* Contenuto menù */
-
-            .menu-container {
-                width: 94%;
-                margin: 30px auto 50px;
-            }
-
-            .intro h2 {
-                font-size: 26px;
-            }
-
-            .intro p {
-                font-size: 13px;
-            }
-
-            /* Categorie */
-
-            .category-header {
-                padding: 18px;
-                font-size: 18px;
-            }
-
-            .category.open .pizza-list {
-                padding: 0 18px 15px;
-            }
-
-            /* Pizze */
-
-            .pizza {
-                gap: 10px;
-                padding: 15px 0;
-            }
-
-            .pizza-name {
-                font-size: 16px;
-            }
-
-            .pizza-description {
-                font-size: 13px;
-                line-height: 1.4;
-            }
-
-            .pizza-price {
-                font-size: 16px;
-            }
-
-            /* Footer */
-
-            footer {
-                padding: 25px 15px;
-                font-size: 12px;
-            }
-
         }
