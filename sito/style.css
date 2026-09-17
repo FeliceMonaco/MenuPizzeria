@@ -84,14 +84,14 @@
             align-items: center;
 
             /* Sposta l'immagine leggermente verso il basso */
-            transform: translateY(200px);
+            transform: translateY(125px);
         }
 
         /* DIMENSIONI E PULSING */
 
         .logo-loading img {
-            width: 1300px;
-            max-width: 70%;
+            width: 1600px;
+            max-width: 85%;
             height: auto;
 
             animation: logoPulse 1.5s infinite ease-in-out;
