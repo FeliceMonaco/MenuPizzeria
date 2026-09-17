@@ -362,3 +362,15 @@
                    max-width: 95%;
                }
            }
+
+           /* REGOLAZIONE IPHONE / IOS */
+           @supports (-webkit-touch-callout: none) {
+               .logo-loading {
+                   transform: translateY(40px);
+               }
+           
+               .logo-loading img {
+                   width: 400px;
+                   max-width: 95%;
+               }
+           }
