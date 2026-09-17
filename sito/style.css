@@ -335,43 +335,95 @@
         }
 
 
+
+
         /* =========================
-           MOBILE
+        OTTIMIZZAZIONE TELEFONO
         ========================= */
 
         @media (max-width: 600px) {
 
+            /* Schermata di caricamento */
+
+            .logo-loading img {
+                width: 230px;
+                max-width: 75%;
+            }
+
             .logo-loading {
-                font-size: 65px;
+                transform: translateY(80px);
+            }
+
+            /* Header */
+
+            header {
+                padding: 40px 15px 35px;
             }
 
             .header-logo {
-                font-size: 42px;
+                font-size: 38px;
+                letter-spacing: 5px;
             }
 
             header h1 {
                 font-size: 25px;
             }
 
-            .intro h2 {
-                font-size: 27px;
+            header p {
+                font-size: 13px;
             }
 
+            /* Contenuto menù */
+
+            .menu-container {
+                width: 94%;
+                margin: 30px auto 50px;
+            }
+
+            .intro h2 {
+                font-size: 26px;
+            }
+
+            .intro p {
+                font-size: 13px;
+            }
+
+            /* Categorie */
+
             .category-header {
-                font-size: 19px;
-                padding: 20px;
+                padding: 18px;
+                font-size: 18px;
             }
 
             .category.open .pizza-list {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding: 0 18px 15px;
+            }
+
+            /* Pizze */
+
+            .pizza {
+                gap: 10px;
+                padding: 15px 0;
             }
 
             .pizza-name {
-                font-size: 17px;
+                font-size: 16px;
             }
 
             .pizza-description {
                 font-size: 13px;
+                line-height: 1.4;
             }
+
+            .pizza-price {
+                font-size: 16px;
+            }
+
+            /* Footer */
+
+            footer {
+                padding: 25px 15px;
+                font-size: 12px;
+            }
+
         }
