@@ -366,7 +366,7 @@
            /* REGOLAZIONE IPHONE / IOS */
            @supports (-webkit-touch-callout: none) {
                .logo-loading {
-                   transform: translateY(40px);
+                   transform: translateY(0px);
                }
            
                .logo-loading img {
