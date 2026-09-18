@@ -413,7 +413,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(72, 19, 31, 0.40); /* Sovrapposizione bordeaux scuro */
+    background: rgba(72, 19, 31, 0.15); /* Sovrapposizione bordeaux scuro */
     z-index: 1;
 }
 
