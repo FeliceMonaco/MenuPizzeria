@@ -391,11 +391,10 @@ header .intro {
 
 footer {
     position: relative;
-    background-image: url("../immagini/tendarossa.png"); /* La tua immagine di sfondo */
+    background-image: url("immagini/tendarossa.png"); /* La tua immagine di sfondo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: var(--crema);
     padding: 60px 20px 20px;
     
     /* Font di base per TUTTI i testi del footer */
