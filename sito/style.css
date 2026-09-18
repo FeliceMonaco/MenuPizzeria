@@ -1,0 +1,386 @@
+
+/* =========================
+           COLORI PRINCIPALI
+        ========================= */
+
+        :root {
+            --bordeaux: #6b1e2e;
+            --bordeaux-dark: #48131f;
+            --nocciola: #c9a477;
+            --crema: #f7f0e5;
+            --testo: #30231e;
+            --bianco: #fffaf3;
+        }
+
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #eed8c7;
+            color: var(--testo);
+        }
+
+                /* =========================
+                 SCHERMATA DI CARICAMENTO
+                 ========================= */
+
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+
+            /* IMMAGINE DI SFONDO */
+            background-image: url("immagini/bgcaricamento.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 9999;
+
+            transition:
+                opacity 1s ease,
+                transform 1s ease;
+        }
+
+        /* Oscuramento leggero dello sfondo */
+
+        #loading-screen::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.25);
+
+            z-index: -1;
+        }
+
+        /* ANIMAZIONE USCITA */
+
+        #loading-screen.hide {
+            opacity: 0;
+            transform: scale(1.08);
+            pointer-events: none;
+        }
+
+        /* NUOVA IMMAGINE PNG */
+
+        .logo-loading {
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Sposta l'immagine leggermente verso il basso */
+            transform: translateY(125px);
+        }
+
+        /* DIMENSIONI E PULSING */
+
+        .logo-loading img {
+            width: 1600px;
+            max-width: 85%;
+            height: auto;
+
+            animation: logoPulse 1.5s infinite ease-in-out;
+        }
+
+        /* ANIMAZIONE PULSING */
+
+        @keyframes logoPulse {
+
+            0%, 100% {
+                opacity: 0.45;
+                transform: scale(0.95);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           CONTENUTO PRINCIPALE
+        ========================= */
+
+        #menu {
+            background: #eed8c7;
+        }
+        
+        .menu-container {
+            background: transparent;
+        }
+
+
+        /* =========================
+        HEADER DESKTOP
+        ========================= */
+
+        header {
+            background-image: url("immagini/desktopback.png");
+            background-size: 100% auto;
+            background-position: top center;
+            background-repeat: no-repeat;
+        
+            min-height: 500px;
+        
+            color: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Disattiva la vecchia curva */
+        header::after {
+            display: none;
+        }
+        
+        /* Nasconde i vecchi testi, se sono già nell'immagine */
+        .header-logo,
+        header h1,
+        header p {
+            display: none;
+        }
+
+        header .intro {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+        
+            margin: 0;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        header .intro h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            color: var(--bordeaux);
+        }
+
+
+        /*font*/
+        @font-face {
+            font-family: "Canopee";
+            src: url("fonts/CanopeeRegular.otf") format("otf");
+            font-weight: normal;
+            font-style: normal;
+        }
+        /***********************************/
+
+        /* =========================
+        HEADER TELEFONO
+        ========================= */
+
+        @media (max-width: 600px) {
+            header {
+                background-image: url("immagini/cellulareback2.png");
+                background-size: 100% auto;
+                background-position: top center;
+                background-repeat: no-repeat;
+            }
+        }
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        .menu-container {
+            width: min(900px, 92%);
+            margin: 20px auto 80px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .intro h2 {
+            color: var(--bordeaux);
+            font-size: 40px;
+        }
+
+        /* =========================
+           CATEGORIE
+        ========================= */
+
+        .category {
+            margin-bottom: 18px;
+
+            background: var(--bianco);
+
+            border: 1px solid #dfccb2;
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow: 0 5px 18px rgba(60, 30, 20, .08);
+        }
+
+        .category-header {
+            width: 100%;
+            border: none;
+
+            background: transparent;
+
+            padding: 22px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            cursor: pointer;
+
+            color: var(--bordeaux);
+
+            font-family: "Canopee";
+            font-size: 22px;
+            font-weight: bold;
+
+            transition: background .3s ease;
+        }
+
+        .category-header:hover {
+            background: #f3e7d7;
+        }
+
+        .arrow {
+            font-size: 18px;
+
+            transition: transform .35s ease;
+        }
+
+        .category.open .arrow {
+            transform: rotate(180deg);
+        }
+
+
+        /* =========================
+           LISTA PIZZE
+        ========================= */
+
+        .pizza-list {
+            max-height: 0;
+            overflow: hidden;
+
+            transition:
+                max-height .5s ease,
+                padding .5s ease;
+        }
+
+        .category.open .pizza-list {
+            max-height: 1000px;
+            padding: 0 25px 20px;
+        }
+
+        .pizza {
+            padding: 18px 0;
+
+            border-top: 1px solid #e7d9c8;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .pizza-info {
+            flex: 1;
+        }
+
+        .pizza-name {
+            color: var(--bordeaux);
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .pizza-description {
+            margin-top: 5px;
+
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+
+            color: #66564d;
+        }
+
+        .pizza-price {
+            color: var(--bordeaux);
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            background: var(--bordeaux-dark);
+            color: #e7d6c0;
+
+            padding: 30px 20px;
+
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+
+
+
+
+       /* SFONDO DESKTOP */
+        #loading-screen {
+            background-image: url("immagini/bgcaricamento.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* SFONDO TELEFONO */
+        @media (max-width: 600px) {
+            #loading-screen {
+            background-image: url("immagini/cellulareback.png");
+            }
+        }
+           /* logo SOLO TELEFONO */
+           @media (max-width: 600px) {
+               .logo-loading {
+                   transform: translateY(80px);
+               }
+           
+               .logo-loading img {
+                   width: 400px;
+                   max-width: 95%;
+               }
+           }
+
+           /* REGOLAZIONE IPHONE / IOS */
+            @supports (-webkit-touch-callout: none) {
+                .logo-loading {
+                    transform: translateY(40px);
+                }
+
+                .logo-loading img {
+                    width: 400px;
+                    max-width: 95%;
+                }
+            }
