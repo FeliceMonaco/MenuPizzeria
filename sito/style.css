@@ -24,7 +24,7 @@
         }
 
         body {
-            font-family: Georgia, "Times New Roman", serif;
+            font-family: 'Canopee', Georgia, serif;
             background: #eed8c7;
             color: var(--testo);
         }
@@ -178,7 +178,7 @@
         /*font*/
         @font-face {
             font-family: "Canopee";
-            src: url("fonts/CanopeeRegular.otf") format("otf");
+            src: url("fonts/CanopeeRegular.woff2") format("woff2");
             font-weight: normal;
             font-style: normal;
         }
@@ -250,9 +250,8 @@
 
             color: var(--bordeaux);
 
-            font-family: "Canopee";
-            font-size: 22px;
-            font-weight: bold;
+            font-family: 'Canopee', Georgia, serif;
+            font-size: 40px;
 
             transition: background .3s ease;
         }
