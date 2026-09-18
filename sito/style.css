@@ -391,7 +391,7 @@ header .intro {
 
 footer {
     position: relative;
-    background-image: url("immagini/tendarossa.png"); /* La tua immagine di sfondo */
+    background-image: url("immagini/tendarossa.PNG"); /* La tua immagine di sfondo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
