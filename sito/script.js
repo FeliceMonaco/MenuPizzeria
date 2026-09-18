@@ -9,7 +9,7 @@ setTimeout(function () {
     loading.style.display = "none";
     menu.style.opacity = "1";
     menu.style.transform = "translateY(0)";
-}, 2200);
+}, 2600);
 
 
 /*
