@@ -178,9 +178,12 @@
         /*font*/
         @font-face {
             font-family: "Canopee";
-            src: url("fonts/CanopeeRegular.woff2") format("woff2");
+            src: url("fonts/CanopeeRegular.woff2") format("woff2"),
+                 url("fonts/CanopeeRegular.otf") format('otf'),
+                 url("fonts/CanopeeRegular.tff") format('ttf');
             font-weight: normal;
             font-style: normal;
+            font-display: swap;
         }
         /***********************************/
 
