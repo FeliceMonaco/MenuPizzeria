@@ -27,7 +27,7 @@ body {
     font-family: 'Canopee', Georgia, serif;
     background: #eed8c7;
     color: var(--testo);
-    -webkit-font-smoothing: antialiasing;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
@@ -39,8 +39,8 @@ body {
 @font-face {
     font-family: "Canopee";
     src: url("fonts/CanopeeRegular.woff2") format("woff2"),
-         url("fonts/CanopeeRegular.otf") format('otf'),
-         url("fonts/CanopeeRegular.tff") format('ttf');
+         url("fonts/CanopeeRegular.otf") format("opentype"),
+         url("fonts/CanopeeRegular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -59,7 +59,7 @@ body {
     bottom: 0;
     width: 100%;
     height: 100vh;
-    height: -webkit-fill-available;
+    height: 100dvh; /* viewport height dinamica per browser moderni */
 
     background-image: url("immagini/bgcaricamento.png");
     background-size: cover;
@@ -138,13 +138,14 @@ header .intro {
     display: none;
 }
 
+
 /* =========================
    IMMAGINE HEADER DESKTOP (BENVENUTO)
 ========================= */
 
 .header-custom-img {
     position: absolute;
-    bottom: -320px; /* Spostata leggermente più in alto (prima era -300px) */
+    bottom: -320px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -154,7 +155,7 @@ header .intro {
 }
 
 .header-custom-img img {
-    max-width: 720px; /* Ingrandita la resa su PC (prima era 570px) */
+    max-width: 720px;
     width: 90%;
     height: auto;
     display: block;
