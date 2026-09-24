@@ -1,0 +1,650 @@
+/* ==========================================
+   1. COLORI & VARIABILI GLOBALI
+   ========================================== */
+
+:root {
+    --bordeaux: #6b1e2e;
+    --bordeaux-dark: #48131f;
+    --nocciola: #c9a477;
+    --crema: #f7f0e5;
+    --testo: #30231e;
+    --bianco: #fffaf3;
+    color-scheme: light; /* Forza la modalità chiara per evitare sovrascrizioni Dark Mode */
+}
+
+
+/* ==========================================
+   2. RESET & STILI BASE
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Canopee', Georgia, serif;
+    background: #eed8c7;
+    color: var(--testo);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ==========================================
+   3. FONTS
+   ========================================== */
+
+@font-face {
+    font-family: "Canopee";
+    src: url("fonts/CanopeeRegular.woff2") format("woff2"),
+         url("fonts/CanopeeRegular.otf") format("opentype"),
+         url("fonts/CanopeeRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* ==========================================
+   4. SCHERMATA DI CARICAMENTO (LOADING)
+   ========================================== */
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Viewport height dinamica per browser moderni */
+
+    background-image: url("immagini/bgcaricamento.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#loading-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: -1;
+}
+
+#loading-screen.hide {
+    opacity: 0;
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
+.logo-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(125px);
+}
+
+.logo-loading img {
+    width: 1600px;
+    max-width: 85%;
+    height: auto;
+    animation: logoPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ==========================================
+   5. HEADER & HERO DESKTOP
+   ========================================== */
+
+header {
+    background-image: url("immagini/desktopback.png");
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+    color: transparent;
+    position: relative;
+    overflow: visible; 
+}
+
+.header-logo,
+header h1,
+header p,
+header .intro {
+    display: none;
+}
+
+.header-custom-img {
+    position: absolute;
+    bottom: -320px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.header-custom-img img {
+    max-width: 720px;
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.15));
+}
+
+
+/* ==========================================
+   6. CONTENUTO PRINCIPALE & MENU
+   ========================================== */
+
+#menu {
+    background: #eed8c7;
+}
+
+.menu-container {
+    background: transparent;
+    width: min(900px, 92%);
+    margin: 200px auto 80px; 
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.intro h2 {
+    color: var(--bordeaux);
+    font-size: 40px;
+}
+
+
+/* ==========================================
+   7. NAVIGAZIONE BANNER & PULSANTI (NUOVO)
+   ========================================== */
+
+/* Banner della Homepage */
+.banner-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.banner-link {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.banner-link:active {
+    transform: scale(0.98);
+}
+
+.banner-link img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Pulsante "Torna al Menu Principale" */
+.back-nav {
+    margin: 15px 0 5px 0;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;                          
+    text-decoration: none;
+    color: var(--crema);               
+    font-weight: 600;
+    font-size: 20px;                   
+    padding: 10px 22px;                
+    background-color: var(--bordeaux);  
+    border-radius: 25px;                
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); 
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-back:active {
+    background-color: #811a27;          /* Tonalità bordeaux leggermente più scura al tocco/click */
+    transform: scale(0.97);              /* Piccolo effetto di compressione al tocco */
+}
+
+.btn-back:active {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==========================================
+   8. TITOLO CATEGORIA
+   ========================================== */
+
+/* 1. AZZERAMENTO CONTENITORE PADRE (.category) */
+.category {
+    padding-top: 0 !important; /* Rimuove lo spazio in alto dal contenitore */
+    overflow: hidden !important; /* Mantiene l'immagine aderente agli angoli */
+    background: var(--bianco);
+    border-radius: 15px;
+}
+
+/* 2. HEADER CATEGORIA (iOS & Android reset) */
+.category-header {
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    line-height: 0 !important;
+    font-size: 0 !important; /* Rimuove spazi vuoti creati dal font su WebKit */
+    
+    /* Disabilita stili nativi mobile */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+/* 3. IMMAGINE DA BORDO A BORDO */
+.category-header-img {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: none !important;
+    vertical-align: top !important; /* Elimina il gap inferiore del tag img */
+    object-fit: cover !important;
+}
+
+/* ==========================================
+   9. LISTA PRODOTTI / PIZZE (VISIBILE)
+   ========================================== */
+
+.pizza-list {
+    max-height: none !important;  /* Forza la visibilità senza blocco */
+    overflow: visible;
+    padding: 0 25px 20px;          /* Applicato subito il padding interno */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pizza {
+    padding: 14px 0;
+    border-top: 1px solid #e7d9c8;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.pizza-info {
+    flex: 1;
+}
+
+.pizza-name {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--bordeaux);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+.pizza-description {
+    margin-top: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #66564d;
+}
+
+.pizza-price {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--bordeaux);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   10. FOOTER
+   ========================================== */
+
+footer {
+    position: relative;
+    background-image: url("immagini/tendarossa.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--crema);
+    padding: 60px 20px 20px;
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 14px;
+    line-height: 1.6;
+    border-top: 3px solid var(--nocciola);
+    overflow: hidden;
+}
+
+.footer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(72, 19, 31, 0.15);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.footer-container, 
+.footer-bottom,
+.footer-divider {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1 1 250px;
+}
+
+.footer-logo {
+    font-family: 'Canopee', Georgia, serif;
+    font-size: 80px;
+    color: var(--crema);
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.footer-col h4 {
+    font-family: 'Canopee', Georgia, serif;
+    font-size: 26px;
+    color: var(--crema);
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    font-weight: normal;
+}
+
+.footer-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--crema);
+    margin-bottom: 4px;
+    font-style: italic;
+}
+
+.footer-address {
+    color: var(--crema);
+}
+
+.footer-link-map {
+    color: var(--crema);
+    text-decoration: underline;
+    font-size: 13px;
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.footer-link-map:hover,
+.footer-phone a:hover, 
+.footer-email a:hover,
+.footer-socials a:hover {
+    opacity: 0.8;
+}
+
+.footer-hours {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-hours li {
+    margin-bottom: 6px;
+    color: var(--crema);
+    font-size: 13.5px;
+}
+
+.footer-hours li span {
+    font-weight: 600;
+}
+
+.footer-hours .close-day {
+    color: var(--crema);
+    opacity: 0.8;
+}
+
+.footer-phone, 
+.footer-email {
+    margin-bottom: 8px;
+    color: var(--crema);
+    font-size: 13.5px;
+}
+
+.footer-phone a, 
+.footer-email a {
+    color: var(--crema);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.footer-socials {
+    margin-top: 15px;
+}
+
+.footer-socials a {
+    color: var(--crema);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.footer-socials span {
+    color: var(--crema);
+    margin: 0 8px;
+    opacity: 0.6;
+}
+
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin-top: 2px;
+    margin-bottom: 12px;
+}
+
+.footer-bottom {
+    width: 92%;
+    max-width: 1100px;
+    margin: 15px auto 0;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--crema);
+}
+
+
+/* ==========================================
+   11. MEDIA QUERIES (RESPONSIVE MOBILE)
+   ========================================== */
+
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 15px 15px;
+        text-align: center;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer-col {
+        width: 100%;
+        flex: none;
+    }
+
+    .footer-logo {
+        font-size: 60px; 
+        margin-bottom: 2px;
+    }
+
+    .footer-col h4 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .footer-divider {
+        margin-top: 0;
+        margin-bottom: 8px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-bottom {
+        margin-top: 10px;
+        padding-top: 10px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        background-image: url("immagini/cellulareback2.png");
+        background-size: 100% auto;
+        background-position: top center;
+        background-repeat: no-repeat;
+        min-height: 320px;
+    }
+
+    .header-custom-img {
+        bottom: -110px; 
+    }
+
+    .header-custom-img img {
+        max-width: 325px; 
+    }
+
+    .menu-container {
+        margin: 60px auto 60px;
+    }
+
+    .category-header {
+        font-size: 30px;
+        padding: 18px 20px;
+    }
+
+    .category.open .pizza-list {
+        padding: 0 16px 15px;
+    }
+
+    .pizza-name {
+        font-size: 15px;
+    }
+
+    .pizza-description {
+        font-size: 12px;
+    }
+
+    .pizza-price {
+        font-size: 14px;
+    }
+
+    #loading-screen {
+        background-image: url("immagini/cellulareback.png");
+    }
+
+    .logo-loading {
+        transform: translateY(80px);
+    }
+
+    .logo-loading img {
+        width: 400px;
+        max-width: 95%;
+    }
+}
+
+
+/* ==========================================
+   12. FIX SPECIFICI PER SAFARI / iOS
+   ========================================== */
+
+@supports (-webkit-touch-callout: none) {
+    #loading-screen {
+        height: -webkit-fill-available;
+    }
+
+    .logo-loading {
+        transform: translateY(40px);
+    }
+
+    .logo-loading img {
+        width: 400px;
+        max-width: 95%;
+    }
+
+    .pizza-list {
+        -webkit-overflow-scrolling: touch;
+    }
+}
