@@ -291,6 +291,8 @@ header .intro {
     overflow: hidden !important; /* Mantiene l'immagine aderente agli angoli */
     background: var(--bianco);
     border-radius: 15px;
+   
+    margin-bottom: 10px;
 }
 
 /* 2. HEADER CATEGORIA (iOS & Android reset) */
