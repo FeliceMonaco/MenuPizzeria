@@ -1,0 +1,404 @@
+/* ==========================================
+   1. COLORI & VARIABILI GLOBALI
+   ========================================== */
+
+:root {
+    --bordeaux: #6b1e2e;
+    --bordeaux-dark: #48131f;
+    --nocciola: #c9a477;
+    --crema: #f7f0e5;
+    --testo: #30231e;
+    --bianco: #fffaf3;
+    color-scheme: only light;
+}
+
+/* ==========================================
+   2. RESET & STILI BASE
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: url("immagini/tendarossa.png");
+    background-attachment: fixed;
+    color: var(--crema);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   3. FONTS
+   ========================================== */
+
+@font-face {
+    font-family: "Canopee";
+    src: url("fonts/CanopeeRegular.woff2") format("woff2"),
+         url("fonts/CanopeeRegular.otf") format("opentype"),
+         url("fonts/CanopeeRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==========================================
+   4. SCHERMATA DI CARICAMENTO (LOADING)
+   ========================================== */
+
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background-image: url("immagini/bgcaricamento.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#loading-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: -1;
+}
+
+#loading-screen.hide {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+.logo-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(125px);
+}
+
+.logo-loading img {
+    width: 1600px;
+    max-width: 85%;
+    height: auto;
+    animation: logoPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==========================================
+   5. HEADER & HERO
+   ========================================== */
+
+header {
+    background-image: url("immagini/headimmagine.png");
+    background-size: contain; /* Cambiato in 'contain' per mostrare l'intero sfondo senza tagliarlo */
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 480px;
+    position: relative;
+    transition: opacity 0.8s ease;
+}
+
+.header-custom-img {
+    position: absolute; /* Corretto il doppio punto e virgola */
+    top: 50%; /* Centra l'immagine verticalmente nell'header */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra perfettamente sia in orizzontale che in verticale */
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+}
+
+.header-custom-img img {
+    max-width: 650px;
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+/* ==========================================
+   6. CONTENITORE PRINCIPALE & PULSANTE NAVIGAZIONE
+   ========================================== */
+
+main {
+    width: min(1000px, 90%);
+    margin: 140px auto 60px;
+    transition: opacity 0.8s ease;
+}
+
+.cta-container {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.btn-discover {
+    display: inline-block;
+    padding: 16px 36px;
+    font-family: 'Canopee', Georgia, serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--crema);
+    background-color: var(--bordeaux);
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid var(--nocciola);
+}
+
+.btn-discover:hover, .btn-discover:active {
+    background-color: var(--bordeaux-dark);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================
+   7. SEZIONI PRESENTAZIONE (STORIA, IMPASTI, MENU)
+   ========================================== */
+
+.story-section {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Ridotto il buco enorme tra immagine e testo */
+    margin-bottom: 80px;
+    background: transparent;
+}
+
+.story-section.reverse {
+    flex-direction: row-reverse;
+}
+
+.story-img-container {
+    flex: 0 0 350px; /* Bloccata la larghezza così non spinge via il testo */
+    max-width: 100%;
+    text-align: center;
+}
+
+.story-img-container img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.story-content {
+    flex: 1;
+    color: var(--crema);
+}
+
+.story-content h2 {
+    font-family: 'Canopee', Georgia, serif;
+    font-size: 42px;
+    letter-spacing: 1.5px;
+    color: var(--crema);
+    margin-bottom: 6px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.story-content h3 {
+    font-family: 'Canopee', Georgia, serif;
+    font-size: 24px;
+    color: var(--nocciola);
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.story-content p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    color: var(--crema);
+    opacity: 0.95;
+}
+
+.story-highlight {
+    font-family: 'Canopee', Georgia, serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: var(--nocciola);
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+   8. CATEGORIE MENU A TENDINA (ACCORDION)
+   ========================================== */
+
+.category {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--nocciola);
+}
+
+.category-header {
+    width: 100%;
+    padding: 18px 24px;
+    background-color: var(--bordeaux);
+    color: var(--crema);
+    font-family: 'Canopee', Georgia, serif;
+    font-size: 28px;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.category-header:hover {
+    background-color: var(--bordeaux-dark);
+}
+
+.category-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease;
+    background-color: rgba(72, 19, 31, 0.6);
+    padding: 0 20px;
+}
+
+.category.open .category-content {
+    max-height: 2000px;
+    padding: 20px;
+}
+
+.pizza-note {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 0.92em;
+    color: var(--nocciola);
+}
+
+
+/* ==========================================
+   10. RESPONSIVE MOBILE
+   ========================================== */
+@media (max-width: 768px) {
+    header {
+        background-image: url("immagini/headimmagine.png");
+        min-height: 240px;
+    }
+
+    .header-custom-img {
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .header-custom-img img {
+        max-width: 280px;
+    }
+
+    main {
+        width: 92%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        overflow-x: hidden; 
+    }
+
+    /* Convertiamo il contenitore da Flexbox a Block per abilitare lo scorrimento del testo */
+    .story-section {
+        display: block;
+        margin-bottom: 40px;
+        text-align: left;
+    }
+
+    /* Annulliamo il flex-direction per la versione reverse */
+    .story-section.reverse {
+        display: block;
+    }
+
+    /* L'immagine viene affiancata a sinistra con float */
+    .story-img-container {
+        float: left;
+        width: 140px; /* Dimensione visibile e fissa dell'immagine */
+        margin-right: 15px;
+        margin-bottom: 10px;
+    }
+
+    /* Nella versione .reverse l'immagine va a destra */
+    .story-section.reverse .story-img-container {
+        float: right;
+        margin-right: 0;
+        margin-left: 15px;
+    }
+
+    .story-img-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Il testo occupa il blocco completo e sccorre attorno all'immagine */
+    .story-content {
+        display: block;
+        width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Clearfix per evitare che le sezioni successive si sovrappongano */
+    .story-section::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .story-content h2 {
+        font-size: 28px; /* Aumentato da 22px */
+        line-height: 1.25;
+        margin-top: 15px;
+        margin-bottom: 12px; /* Margine aumentato per staccare dal contenuto */
+    }
+
+    .story-content h3 {
+        font-size: 20px; /* Aumentato da 15px */
+        line-height: 1.3;
+        margin-top: 12px;
+        margin-bottom: 10px;
+    }
+
+    .story-content p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 16px; /* Aumentata la spaziatura tra i paragrafi */
+    }
+
+    .story-highlight {
+        font-size: 16px;
+        margin-top: 16px;
+    }
+}
